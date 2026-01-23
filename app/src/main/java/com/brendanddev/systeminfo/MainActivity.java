@@ -3,8 +3,8 @@ package com.brendanddev.systeminfo;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
-import android.os.Build;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
 
@@ -17,20 +17,13 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        int batteryPercentage = getBatteryPrecentage();
+
+        TextView batteryPercentageTextView = (TextView) findViewById(R.id.batteryPercentage);
+        batteryPercentageTextView.setText("" + batteryPercentageTextView.getText().toString() + "" + batteryPercentage);
     }
 
-
-
-
-    public void getDeviceInfo() {
-        String model = Build.MODEL;
-        String manufacturer = Build.MANUFACTURER;
-        String brand = Build.BRAND;
-        String type = Build.TYPE;
-        int sdk = Build.VERSION.SDK_INT;
-        String board = Build.BOARD;
-        String host = Build.HOST;
-    }
 
 
     public int getBatteryPrecentage() {
