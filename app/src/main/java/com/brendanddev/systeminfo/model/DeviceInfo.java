@@ -1,4 +1,4 @@
-package com.brendanddev.systeminfo;
+package com.brendanddev.systeminfo.model;
 
 import android.os.Build;
 
