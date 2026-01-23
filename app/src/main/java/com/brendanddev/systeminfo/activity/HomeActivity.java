@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.brendanddev.systeminfo.R;
+import com.brendanddev.systeminfo.model.BatteryInfo;
 
 
 public class HomeActivity extends BaseActivity {
@@ -20,15 +21,20 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // Set name of current activity
         TextView activityName = (TextView) findViewById(R.id.activityName);
         activityName.setText(ACTIVITY);
 
-        TextView welcomeText = (TextView) findViewById(R.id.welcomeText);
-
+        // Set welcome message to include user name based on value passed in the intent
         Intent intent = getIntent();
         String incomingText = intent.getStringExtra("username");
-
+        TextView welcomeText = (TextView) findViewById(R.id.welcomeText);
         String welcomeMessage = String.format("Welcome %s!", incomingText);
         welcomeText.setText(welcomeMessage);
+
+        // Set battery percentage
+        int batteryPercentage = BatteryInfo.getBatteryPercentage(this);
+        TextView batteryPct = (TextView) findViewById(R.id.batteryPct);
+        batteryPct.setText("Battery Percentage: " + batteryPercentage);
     }
 }

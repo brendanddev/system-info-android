@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="center"
     tools:context=".activity.HomeActivity">
 
     <TextView
@@ -61,7 +62,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/systemInfo"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <TextView
         android:id="@+id/welcomeText"
@@ -72,9 +73,22 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/activityName"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintVertical_bias="0.017" />
+
+    <TextView
+        android:id="@+id/batteryPct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Battery Percentage: "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
+        app:layout_constraintVertical_bias="0.385" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
