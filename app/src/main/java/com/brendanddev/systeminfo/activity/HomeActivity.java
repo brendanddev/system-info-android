@@ -1,8 +1,10 @@
-package com.brendanddev.systeminfo;
+package com.brendanddev.systeminfo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.brendanddev.systeminfo.R;
 
 
 public class HomeActivity extends BaseActivity {

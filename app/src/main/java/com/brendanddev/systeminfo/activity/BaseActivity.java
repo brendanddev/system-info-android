@@ -1,4 +1,4 @@
-package com.brendanddev.systeminfo;
+package com.brendanddev.systeminfo.activity;
 
 import android.os.Bundle;
 import android.util.Log;
