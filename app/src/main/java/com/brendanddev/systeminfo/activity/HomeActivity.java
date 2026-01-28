@@ -2,6 +2,8 @@ package com.brendanddev.systeminfo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.brendanddev.systeminfo.R;
@@ -13,6 +15,7 @@ public class HomeActivity extends BaseActivity {
 
     private final static String TAG = "==== HomeActivity ====";
     private final static String ACTIVITY = "Home";
+    private final static String[] options = {"Model", "Manufacturer", "Brand", "Type", "Battery Percentage"};
 
     @Override
     protected String getLogTag() { return TAG; }
@@ -33,18 +36,15 @@ public class HomeActivity extends BaseActivity {
         String welcomeMessage = String.format("Welcome %s!", incomingText);
         welcomeText.setText(welcomeMessage);
 
-        // Set model
-        TextView modelTextView = (TextView) findViewById(R.id.modelTextView);
-        String model = DeviceInfo.getModel();
-        modelTextView.setText("Model: " + model);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        TextView spinnerLabel = (TextView) findViewById(R.id.spinnerLabel);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                options
+        );
 
-        TextView manuTextView = (TextView) findViewById(R.id.manuTextView);
-        String manufacturer = DeviceInfo.getManufacturer();
-        manuTextView.setText("Manufacturer: " + manufacturer);
 
-        // Set battery percentage
-        int batteryPercentage = BatteryInfo.getBatteryPercentage(this);
-        TextView batteryPct = (TextView) findViewById(R.id.batteryPct);
-        batteryPct.setText("Battery Percentage: " + batteryPercentage);
+
     }
 }
