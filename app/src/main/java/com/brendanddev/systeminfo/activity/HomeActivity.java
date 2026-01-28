@@ -43,6 +43,7 @@ public class HomeActivity extends BaseActivity {
                 android.R.layout.simple_spinner_item,
                 options
         );
+        spinner.setAdapter(adapter);
 
 
 
