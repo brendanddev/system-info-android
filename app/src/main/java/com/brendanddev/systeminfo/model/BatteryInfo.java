@@ -1,21 +1,16 @@
 package com.brendanddev.systeminfo.model;
 
-<<<<<<< HEAD
-=======
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 
->>>>>>> cf1ea56cbfa1a940a40fd2aff7b4d9391ffb1a3e
 public class BatteryInfo {
 
     private int batteryPercentage;
     private String batteryHealth;
     private double batteryTemp;
     private boolean batteryExists;
-<<<<<<< HEAD
-=======
     private boolean isCharging;
     private String chargeType;
 
@@ -46,8 +41,6 @@ public class BatteryInfo {
     public boolean isBatteryExists() {
         return false;
     }
->>>>>>> cf1ea56cbfa1a940a40fd2aff7b4d9391ffb1a3e
-
 
 
 

@@ -4,10 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-<<<<<<< HEAD
-=======
+import com.brendanddev.systeminfo.R;
 import com.brendanddev.systeminfo.model.BatteryInfo;
->>>>>>> cf1ea56cbfa1a940a40fd2aff7b4d9391ffb1a3e
+import com.brendanddev.systeminfo.model.DeviceInfo;
 
 
 public class HomeActivity extends BaseActivity {
@@ -33,6 +32,15 @@ public class HomeActivity extends BaseActivity {
         TextView welcomeText = (TextView) findViewById(R.id.welcomeText);
         String welcomeMessage = String.format("Welcome %s!", incomingText);
         welcomeText.setText(welcomeMessage);
+
+        // Set model
+        TextView modelTextView = (TextView) findViewById(R.id.modelTextView);
+        String model = DeviceInfo.getModel();
+        modelTextView.setText("Model: " + model);
+
+        TextView manuTextView = (TextView) findViewById(R.id.manuTextView);
+        String manufacturer = DeviceInfo.getManufacturer();
+        manuTextView.setText("Manufacturer: " + manufacturer);
 
         // Set battery percentage
         int batteryPercentage = BatteryInfo.getBatteryPercentage(this);

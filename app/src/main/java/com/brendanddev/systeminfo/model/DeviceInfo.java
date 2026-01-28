@@ -4,8 +4,8 @@ import android.os.Build;
 
 public class DeviceInfo {
 
-    private String model;
-    private String manufacturer;
+    private static String model;
+    private static String manufacturer;
     private String brand;
     private String type;
     private int sdk;
@@ -13,8 +13,8 @@ public class DeviceInfo {
     private String host;
 
     public DeviceInfo() {
-        this.model = Build.MODEL;
-        this.manufacturer = Build.MANUFACTURER;
+        model = Build.MODEL;
+        manufacturer = Build.MANUFACTURER;
         this.brand = Build.BRAND;
         this.type = Build.TYPE;
         this.sdk = Build.VERSION.SDK_INT;
@@ -22,8 +22,8 @@ public class DeviceInfo {
         this.host = Build.HOST;
     }
 
-    public String getModel() { return model; }
-    public String getManufacturer() { return manufacturer; }
+    public static String getModel() { return model; }
+    public static String getManufacturer() { return manufacturer; }
     public String getBrand() { return brand; }
     public String getType() { return type; }
     public int getSdk() { return sdk; }
