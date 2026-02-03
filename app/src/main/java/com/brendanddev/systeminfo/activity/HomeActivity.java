@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+
 import com.brendanddev.systeminfo.R;
-import com.brendanddev.systeminfo.model.BatteryInfo;
-import com.brendanddev.systeminfo.model.DeviceInfo;
 
 
 public class HomeActivity extends BaseActivity {
@@ -21,6 +21,9 @@ public class HomeActivity extends BaseActivity {
     private final static String[] options = {"Model", "Manufacturer", "Brand", "Type", "Battery Percentage"};
     private final static String USERNAME = "username";
 
+    private ActivityResultLauncher<Intent> Launch4Result;
+
+
     @Override
     protected String getLogTag() { return TAG; }
 
@@ -29,6 +32,11 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Launch4Result = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                this::handleResult);
+
 
         // Set name of current activity
         TextView activityName = findViewById(R.id.activityName);
@@ -50,23 +58,40 @@ public class HomeActivity extends BaseActivity {
             }
         }
 
-        // Show spinner
-        Spinner spinner = findViewById(R.id.spinner);
-        TextView spinnerLabel = findViewById(R.id.spinnerLabel);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_spinner_item,
-                options
-        );
-        spinner.setAdapter(adapter);
-
         // Attach on click listener to close button
-        Button closeButton = findViewById(R.id.closeButton);
-        closeButton.setOnClickListener(this::onClickClose);
+        Button logOutButton = findViewById(R.id.closeButton);
+        logOutButton.setOnClickListener(this::onClickLogOut);
+
+        // Attach onclick to settings button
+        Button settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(this::onClickSettings);
+
     }
 
-    public void onClickClose(View view) {
+
+    public void onClickLogOut(View view) {
         Log.d(TAG, "onClickClose()");
         finish();
     }
+
+    public void onClickSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        Launch4Result.launch(intent);
+    }
+
+
+    private void handleResult(ActivityResult result) {
+        int resultCode = result.getResultCode();
+
+        if (resultCode == RESULT_OK) {
+            Intent data = result.getData();
+            Log.d(TAG, "RESULT OK");
+        } else if (resultCode == RESULT_CANCELED) {
+            Log.d(TAG, "RESULT_CANCELED");
+        } else {
+            Log.d(TAG, "Unexpected error");
+        }
+    }
+
+
 }
