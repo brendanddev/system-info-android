@@ -8,4 +8,10 @@
     <string name="login_activity_signup_button_label">Need to Sign Up?</string>
     <string name="login_activity_signup_button_text">Sign Up</string>
 
+    <string name="signup_activity_name">Sign Up</string>
+    <string name="signup_activity_name_label">Name: </string>
+    <string name="signup_activity_username_label">Username: </string>
+    <string name="signup_activity_email_label">Email: </string>
+    <string name="signup_activity_password_label">Password: </string>
+
 </resources>
