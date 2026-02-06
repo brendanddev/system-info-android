@@ -22,11 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="664dp"
-        android:text="TextView"
+        android:text="@string/login_activity_name"
         android:textAlignment="center"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        tools:layout_editor_absoluteX="158dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -39,67 +41,86 @@
         android:id="@+id/usernameInput"
         android:layout_width="107dp"
         android:layout_height="38dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="260dp"
-        tools:layout_editor_absoluteY="106dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/usernameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/activityName" />
 
     <EditText
         android:id="@+id/passwordInput"
         android:layout_width="107dp"
         android:layout_height="38dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="260dp"
-        tools:layout_editor_absoluteY="180dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/passwordLabel"
+        app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
 
     <TextView
         android:id="@+id/usernameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username: "
+        android:layout_marginTop="60dp"
+        android:text="@string/login_activity_username_label"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="107dp" />
+        app:layout_constraintEnd_toStartOf="@+id/usernameInput"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityName" />
 
     <TextView
         android:id="@+id/passwordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password: "
+        android:layout_marginTop="44dp"
+        android:text="@string/login_activity_password_label"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="180dp" />
-
-    <TextView
-        android:id="@+id/signUpLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Need to Sign Up?"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="663dp" />
+        app:layout_constraintEnd_toStartOf="@+id/passwordInput"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameLabel" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_marginTop="208dp"
+        android:text="@string/login_activity_login_button_label"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="256dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityName" />
 
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:layout_marginTop="352dp"
+        android:text="@string/login_activity_signup_button_text"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="235dp"
-        tools:layout_editor_absoluteY="663dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/signUpLabel"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+    <TextView
+        android:id="@+id/signUpLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="352dp"
+        android:text="@string/login_activity_signup_button_label"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/signUpButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

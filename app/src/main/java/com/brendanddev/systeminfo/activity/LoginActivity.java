@@ -13,7 +13,6 @@ import com.brendanddev.systeminfo.R;
 public class LoginActivity extends BaseActivity {
 
     private final static String TAG = "==== LoginActivity ====";
-    private final static String ACTIVITY = "Login";
 
 
     @Override
@@ -29,13 +28,12 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView activityName = findViewById(R.id.activityName);
-        activityName.setText(ACTIVITY);
-
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(this::onClickLogin);
-    }
 
+        Button signUpButton = findViewById(R.id.signUpButton);
+        signUpButton.setOnClickListener(this::onClickSignUp);
+    }
 
 
     public void onClickLogin(View view) {
@@ -54,6 +52,14 @@ public class LoginActivity extends BaseActivity {
         Intent switchActivity = new Intent(LoginActivity.this, HomeActivity.class);
         switchActivity.putExtra("username", username);
         startActivity(switchActivity);
+    }
+
+
+    public void onClickSignUp(View view) {
+        Log.d(TAG, "onClickSignUp() - Sign Up Button Clicked");
+
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
     }
 
 
