@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.brendanddev.systeminfo.R;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity {
 
     private final static String TAG = "==== LoginActivity ====";
     private final static String ACTIVITY = "Login";
@@ -29,40 +29,31 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Set text in activity name text view to current activity name
-        TextView activityName = (TextView) findViewById(R.id.activityName);
+        TextView activityName = findViewById(R.id.activityName);
         activityName.setText(ACTIVITY);
 
-        // Set click listener for the submit button
-        Button submitButton = (Button) findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(this);
+        Button loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(this::onClickLogin);
     }
 
-    /**
-     * Handles click events for the views in this activity.
-     *
-     * @param view The view that was clicked.
-     */
-    @Override
-    public void onClick(View view) {
-        int buttonId = view.getId();
-        Log.d(TAG, "Button ID: " + buttonId + " was pressed!");
 
-        if (buttonId == R.id.submitButton) {
-            TextView usernameText = (TextView) findViewById(R.id.usernameText);
-            TextView passwordText = (TextView) findViewById(R.id.passwordText);
-            String username = usernameText.getText().toString();
-            String password = passwordText.getText().toString();
 
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(LoginActivity.this, "Required fields missing!", Toast.LENGTH_SHORT).show();
-                return;
-            }
+    public void onClickLogin(View view) {
+        Log.d(TAG, "onClickLogin() - Login Button Pressed");
 
-            Intent switchActivity = new Intent(LoginActivity.this, HomeActivity.class);
-            switchActivity.putExtra("username", username);
-            startActivity(switchActivity);
+        TextView usernameText = findViewById(R.id.usernameInput);
+        TextView passwordText = findViewById(R.id.passwordInput);
+        String username = usernameText.getText().toString();
+        String password = passwordText.getText().toString();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(LoginActivity.this, "Required fields missing!", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        Intent switchActivity = new Intent(LoginActivity.this, HomeActivity.class);
+        switchActivity.putExtra("username", username);
+        startActivity(switchActivity);
     }
 
 

@@ -18,9 +18,7 @@ public class HomeActivity extends BaseActivity {
 
     private final static String TAG = "==== HomeActivity ====";
     private final static String ACTIVITY = "Home";
-    private final static String[] options = {"Model", "Manufacturer", "Brand", "Type", "Battery Percentage"};
     private final static String USERNAME = "username";
-
     private ActivityResultLauncher<Intent> Launch4Result;
 
 
@@ -65,7 +63,6 @@ public class HomeActivity extends BaseActivity {
         // Attach onclick to settings button
         Button settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(this::onClickSettings);
-
     }
 
 
