@@ -4,9 +4,22 @@ import android.os.Build;
 
 public class DeviceInfo {
 
-    public static String getModel() { return Build.MODEL; }
-    public static String getManufacturer() { return Build.MANUFACTURER; }
-    public String getBrand() { return Build.BRAND; }
-    public String getType() { return Build.TYPE; }
+    private final String model;
+    private final String manufacturer;
+    private final String brand;
+    private final String type;
+
+    public DeviceInfo() {
+        model = Build.MODEL;
+        manufacturer = Build.MANUFACTURER;
+        brand = Build.BRAND;
+        type = Build.TYPE;
+    }
+
+
+    public String getModel() { return model; }
+    public String getManufacturer() { return manufacturer; }
+    public String getBrand() { return brand; }
+    public String getType() { return type; }
 
 }
