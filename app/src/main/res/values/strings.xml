@@ -21,6 +21,10 @@
     <string name="manufacturer_label">Manufacturer</string>
     <string name="brand_label">Brand</string>
     <string name="type_label">Type</string>
+    <string name="selected_category_label">Selected</string>
+
+    <!-- Settings Activity -->
+    <string name="settings_text">Settings</string>
 
 
 </resources>

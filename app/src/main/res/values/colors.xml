@@ -5,4 +5,5 @@
     <color name="background_color">#1A1A2E</color>
     <color name="text_color">#FFFFFFFF</color>
     <color name="signup_btn_color">#00BCD4</color>
+    <color name="card_color">#0F3460</color>
 </resources>
