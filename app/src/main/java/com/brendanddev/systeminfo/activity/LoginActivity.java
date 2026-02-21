@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 import com.brendanddev.systeminfo.R;
 
+/**
+ * Handles the Login screen.
+ *
+ * @author Brendan Dileo
+ */
 public class LoginActivity extends BaseActivity {
 
     private static final String TAG = "==== LoginActivity ====";

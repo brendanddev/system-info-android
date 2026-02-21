@@ -14,5 +14,9 @@
     <string name="login_button">Login</string>
     <string name="login_redirect">Don\'t have an account? Sign Up</string>
 
+    <!-- Home Activity -->
+    <string name="home_text">Home</string>
+    <string name="welcome_msg">Welcome </string>
+
 
 </resources>
