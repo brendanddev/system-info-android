@@ -17,6 +17,10 @@
     <!-- Home Activity -->
     <string name="home_text">Home</string>
     <string name="welcome_msg">Welcome </string>
+    <string name="model_label">Model</string>
+    <string name="manufacturer_label">Manufacturer</string>
+    <string name="brand_label">Brand</string>
+    <string name="type_label">Type</string>
 
 
 </resources>

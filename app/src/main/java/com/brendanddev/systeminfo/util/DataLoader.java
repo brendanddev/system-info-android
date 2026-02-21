@@ -4,6 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+/**
+ * Utility class for managing user data in SharedPreferences.
+ *
+ * @author Brendan Dileo
+ */
 public class DataLoader {
 
     private static final String TAG = "==== DataLoader ====";
@@ -14,6 +19,10 @@ public class DataLoader {
     public static final String KEY_PASSWORD = "password";
 
 
+    /**
+     * Creates a new DataLoader instance.
+     * @param context The application context used to access SharedPreferences.
+     */
     public DataLoader(Context context) {
         this.context = context;
     }
@@ -22,7 +31,7 @@ public class DataLoader {
      * Saves the users info to SharedPreferences.
      * @param name The users name.
      * @param email The users email.
-     * @param password The users password..
+     * @param password The users password.
      */
     public void saveData(String name, String email, String password) {
         SharedPreferences sharedPreferences = this.context.getSharedPreferences(SP_USER_DATA, Context.MODE_PRIVATE);
