@@ -1,6 +1,5 @@
 package com.brendanddev.systeminfo.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brendanddev.systeminfo.R;
+import com.brendanddev.systeminfo.util.DataLoader;
 
 /**
  * Handles the Login screen.
@@ -21,9 +21,7 @@ import com.brendanddev.systeminfo.R;
 public class LoginActivity extends BaseActivity {
 
     private static final String TAG = "==== LoginActivity ====";
-    private static final String SP_USER_DATA = "user_data";
-    private static final String KEY_EMAIL = "email";
-    private static final String KEY_PASSWORD = "password";
+    private DataLoader dataLoader;
 
 
     @Override
@@ -34,8 +32,9 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        dataLoader = new DataLoader(this);
 
-        Button loginButton = findViewById(R.id.loginButton);
+        Button loginButton = findViewById(R.id.signUpButton);
         loginButton.setOnClickListener(this::onClickLogin);
 
         TextView signupRedirect = findViewById(R.id.signUpRedirect);
@@ -61,9 +60,9 @@ public class LoginActivity extends BaseActivity {
         }
 
         // Load user data from shared prefs
-        SharedPreferences sharedPreferences = loadData();
-        String emailData = sharedPreferences.getString(KEY_EMAIL, null);
-        String passwordData = sharedPreferences.getString(KEY_PASSWORD, null);
+        SharedPreferences sharedPreferences = dataLoader.loadData();
+        String emailData = sharedPreferences.getString(DataLoader.KEY_EMAIL, null);
+        String passwordData = sharedPreferences.getString(DataLoader.KEY_PASSWORD, null);
 
         if (emailData == null || passwordData == null) {
             Toast.makeText(this, "No Account Found!", Toast.LENGTH_LONG).show();
@@ -91,14 +90,6 @@ public class LoginActivity extends BaseActivity {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    /**
-     * Loads the users saved data from SharedPreferences.
-     * @return The SharedPreferences file containing the users data.
-     */
-    private SharedPreferences loadData() {
-        return this.getSharedPreferences(SP_USER_DATA, Context.MODE_PRIVATE);
     }
 
 

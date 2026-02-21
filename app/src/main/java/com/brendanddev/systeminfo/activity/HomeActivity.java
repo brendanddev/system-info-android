@@ -4,9 +4,16 @@ import android.os.Bundle;
 
 import com.brendanddev.systeminfo.R;
 
+/**
+ * Handles the home screen.
+ *
+ * @author Brendan Dileo
+ */
 public class HomeActivity extends BaseActivity {
 
     private static final String TAG = "==== HomeActivity ====";
+
+
 
 
     @Override
