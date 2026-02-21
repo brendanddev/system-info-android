@@ -1,12 +1,18 @@
 <resources>
     <string name="app_name">System Info</string>
 
+    <!-- Sign Up Activity -->
     <string name="signup_text">Sign Up</string>
     <string name="name_label">Name: </string>
     <string name="email_label">Email: </string>
     <string name="pswd_label">Password: </string>
     <string name="signup_button">Sign Up</string>
     <string name="signup_redirect">Already have an account? Login</string>
+
+    <!-- Login Activity -->
+    <string name="login_text">Login</string>
+    <string name="login_button">Login</string>
+    <string name="login_redirect">Don\'t have an account? Sign Up</string>
 
 
 </resources>

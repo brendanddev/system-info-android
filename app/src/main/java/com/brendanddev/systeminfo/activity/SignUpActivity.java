@@ -1,5 +1,6 @@
 package com.brendanddev.systeminfo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,10 +29,10 @@ public class SignUpActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        Button signUpButton = findViewById(R.id.signUpButton);
+        Button signUpButton = findViewById(R.id.loginButton);
         signUpButton.setOnClickListener(this::onClickSignUp);
 
-        TextView loginRedirect = findViewById(R.id.loginRedirect);
+        TextView loginRedirect = findViewById(R.id.signUpRedirect);
         loginRedirect.setOnClickListener(this::onClickLoginRedirect);
     }
 
@@ -50,6 +51,9 @@ public class SignUpActivity extends BaseActivity {
     private void onClickLoginRedirect(View view) {
         Log.d(TAG, "Login Redirect Text Clicked!");
 
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 
