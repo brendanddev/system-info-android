@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 /**
- * Utility class for managing user data in SharedPreferences.
+ * Utility class for managing user data and preferences in SharedPreferences.
  *
  * @author Brendan Dileo
  */
@@ -14,9 +14,11 @@ public class DataLoader {
     private static final String TAG = "==== DataLoader ====";
     private Context context;
     public static final String SP_USER_DATA = "user_data";
+    public static final String SP_USER_PREFS = "user_prefs";
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
+    public static final String KEY_CATEGORY = "category";
 
 
     /**
@@ -42,7 +44,19 @@ public class DataLoader {
         editor.putString(KEY_PASSWORD, password);
         editor.apply();
         Log.d(TAG, "Saving User Data!");
+    }
 
+    /**
+     * Saves the users preferences to SharedPreferences.
+     * @param category The selected category.
+     */
+    public void saveSettings(String category) {
+        SharedPreferences sharedPreferences = this.context.getSharedPreferences(SP_USER_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(KEY_CATEGORY, category);
+        editor.apply();
+        Log.d(TAG, "Saving User Preferences!");
     }
 
     /**
@@ -51,6 +65,15 @@ public class DataLoader {
      */
     public SharedPreferences loadData() {
         return this.context.getSharedPreferences(SP_USER_DATA, Context.MODE_PRIVATE);
+    }
+
+    /**
+     * Loads the users saved preferences from SharedPreferences.
+     * @return The saved category string, defaults to DEVICE if none saved.
+     */
+    public String loadSettings() {
+        SharedPreferences sharedPreferences = this.context.getSharedPreferences(SP_USER_PREFS, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_CATEGORY, Category.DEVICE.toString());
     }
 
 }
