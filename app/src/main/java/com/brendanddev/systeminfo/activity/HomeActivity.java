@@ -28,8 +28,8 @@ public class HomeActivity extends BaseActivity {
     private DeviceInfo deviceInfo;
     private ActivityResultLauncher<Intent> activityResultLauncher;
 
-    private String currentCategory = "DEVICE";
-    public static final String REQUEST_RESULT="REQUEST_RESULT";
+    private String currentCategory;
+    public static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
 
 
     @Override
@@ -48,6 +48,8 @@ public class HomeActivity extends BaseActivity {
                 new ActivityResultContracts.StartActivityForResult(),
                 this::handleResult);
 
+        currentCategory = dataLoader.loadSettings();
+
         Button settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(this::onClickSettings);
 
@@ -62,6 +64,18 @@ public class HomeActivity extends BaseActivity {
         welcomeMessageView.setText("Welcome " + name + "!");
         updateCategoryLabel();
         updateCategoryData();
+
+        Log.d(TAG, "Current Category: " + currentCategory);
+    }
+
+    /**
+     * Called when activity comes back into focus.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateCategoryLabel();
+        Log.d(TAG, "Current Category: " + currentCategory);
     }
 
 
@@ -70,12 +84,16 @@ public class HomeActivity extends BaseActivity {
      * @param result The result returned from the launched activity.
      */
     private void handleResult(ActivityResult result) {
+        Log.d(TAG, "handleResult()");
         int resultCode = result.getResultCode();
+
         if (resultCode == RESULT_OK) {
             Intent data = result.getData();
-            Log.d(TAG, "RESULT_OK... Data: " + data.getIntExtra(REQUEST_RESULT, 0));
+            if (data != null && data.getStringExtra(EXTRA_CATEGORY) != null) {
+                currentCategory = data.getStringExtra(EXTRA_CATEGORY);
+            }
         } else if (resultCode == RESULT_CANCELED) {
-            Log.d(TAG, "REQUEST_CANCELED");
+            Log.d(TAG, "RESULT_CANCELLED");
         } else {
             Log.d(TAG, "Unexpected Error... Code: " + resultCode);
         }
@@ -101,6 +119,7 @@ public class HomeActivity extends BaseActivity {
         Log.d(TAG, "Settings Button is Clicked!");
 
         Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra(EXTRA_CATEGORY, currentCategory);
         activityResultLauncher.launch(intent);
     }
 
@@ -109,6 +128,8 @@ public class HomeActivity extends BaseActivity {
      */
     private void updateCategoryLabel() {
         TextView selectedCategoryValue = findViewById(R.id.selectedCategory);
+        String category = dataLoader.loadSettings();
+
         selectedCategoryValue.setText(currentCategory);
     }
 
