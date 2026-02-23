@@ -25,6 +25,12 @@
 
     <!-- Settings Activity -->
     <string name="settings_text">Settings</string>
+    <string name="settings_system_category">System Category</string>
+    <string-array name="categories">
+        <item>Device</item>
+        <item>Battery</item>
+        <item>Memory</item>
+    </string-array>
 
 
 </resources>
