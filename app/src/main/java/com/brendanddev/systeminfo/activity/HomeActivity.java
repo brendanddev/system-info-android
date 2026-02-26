@@ -14,7 +14,9 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 
 import com.brendanddev.systeminfo.R;
+import com.brendanddev.systeminfo.model.BatteryInfo;
 import com.brendanddev.systeminfo.model.DeviceInfo;
+import com.brendanddev.systeminfo.model.MemoryInfo;
 import com.brendanddev.systeminfo.util.DataLoader;
 
 /**
@@ -26,6 +28,8 @@ public class HomeActivity extends BaseActivity {
     private static final String TAG = "==== HomeActivity ====";
     private DataLoader dataLoader;
     private DeviceInfo deviceInfo;
+    private BatteryInfo batteryInfo;
+    private MemoryInfo memoryInfo;
     private ActivityResultLauncher<Intent> activityResultLauncher;
 
     private String currentCategory;
@@ -42,6 +46,8 @@ public class HomeActivity extends BaseActivity {
 
         dataLoader = new DataLoader(this);
         deviceInfo = new DeviceInfo();
+        batteryInfo = new BatteryInfo(this);
+        memoryInfo = new MemoryInfo(this);
 
         // Register launcher to start an activity and handle the result
         activityResultLauncher = registerForActivityResult(
@@ -75,6 +81,7 @@ public class HomeActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         updateCategoryLabel();
+        updateCategoryData();
         Log.d(TAG, "Current Category: " + currentCategory);
     }
 
@@ -129,7 +136,6 @@ public class HomeActivity extends BaseActivity {
     private void updateCategoryLabel() {
         TextView selectedCategoryValue = findViewById(R.id.selectedCategory);
         String category = dataLoader.loadSettings();
-
         selectedCategoryValue.setText(currentCategory);
     }
 
@@ -138,19 +144,48 @@ public class HomeActivity extends BaseActivity {
      */
     private void updateCategoryData() {
 
-        if (currentCategory.equals("DEVICE")) {
-            TextView modelValue = findViewById(R.id.modelValue);
-            TextView manufacturerValue = findViewById(R.id.manufacturerValue);
-            TextView brandValue = findViewById(R.id.brandValue);
-            TextView typeValue = findViewById(R.id.typeValue);
+        TextView labelOne = findViewById(R.id.labelOne);
+        TextView labelTwo = findViewById(R.id.labelTwo);
+        TextView labelThree = findViewById(R.id.labelThree);
+        TextView labelFour = findViewById(R.id.labelFour);
 
-            modelValue.setText(deviceInfo.getModel());
-            manufacturerValue.setText(deviceInfo.getManufacturer());
-            brandValue.setText(deviceInfo.getBrand());
-            typeValue.setText(deviceInfo.getType());
+        TextView fieldOne = findViewById(R.id.fieldOne);
+        TextView fieldTwo = findViewById(R.id.fieldTwo);
+        TextView fieldThree = findViewById(R.id.fieldThree);
+        TextView fieldFour = findViewById(R.id.fieldFour);
+
+        if (currentCategory.equals("DEVICE")) {
+            labelOne.setText("Model");
+            labelTwo.setText("Manufacturer");
+            labelThree.setText("Brand");
+            labelFour.setText("Type");
+
+            fieldOne.setText(deviceInfo.getModel());
+            fieldTwo.setText(deviceInfo.getManufacturer());
+            fieldThree.setText(deviceInfo.getBrand());
+            fieldFour.setText(deviceInfo.getType());
+
         } else if (currentCategory.equals("BATTERY")) {
+            labelOne.setText("Level");
+            labelTwo.setText("Temperature");
+            labelThree.setText("Status");
+            labelFour.setText("Health");
+
+            fieldOne.setText(batteryInfo.getLevel() + "%");
+            fieldTwo.setText(batteryInfo.getTemperature() + "°C");
+            fieldThree.setText(batteryInfo.getStatus());
+            fieldFour.setText(batteryInfo.getHealth());
 
         } else if (currentCategory.equals("MEMORY")) {
+            labelOne.setText("Total RAM");
+            labelTwo.setText("Available RAM");
+            labelThree.setText("Total Storage");
+            labelFour.setText("Available Storage");
+
+            fieldOne.setText(memoryInfo.getTotalRam() + " MB");
+            fieldTwo.setText(memoryInfo.getAvailableRam() + " MB");
+            fieldThree.setText(memoryInfo.getTotalStorage() + " GB");
+            fieldFour.setText(memoryInfo.getAvailableStorage() + " GB");
 
         }
     }
