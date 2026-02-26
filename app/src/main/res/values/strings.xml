@@ -17,11 +17,22 @@
     <!-- Home Activity -->
     <string name="home_text">Home</string>
     <string name="welcome_msg">Welcome </string>
+    <string name="selected_category_label">Selected</string>
+
     <string name="model_label">Model</string>
     <string name="manufacturer_label">Manufacturer</string>
     <string name="brand_label">Brand</string>
     <string name="type_label">Type</string>
-    <string name="selected_category_label">Selected</string>
+
+    <string name="level_label">Level</string>
+    <string name="temperature_label">Temperature</string>
+    <string name="status_label">Status</string>
+    <string name="health_label">Health</string>
+
+    <string name="total_ram_label">Total RAM</string>
+    <string name="available_ram_label">Available RAM</string>
+    <string name="total_storage_label">Total Storage</string>
+    <string name="available_storage_label">Available Storage</string>
 
     <!-- Settings Activity -->
     <string name="settings_text">Settings</string>

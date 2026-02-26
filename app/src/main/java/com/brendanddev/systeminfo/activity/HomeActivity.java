@@ -155,10 +155,10 @@ public class HomeActivity extends BaseActivity {
         TextView fieldFour = findViewById(R.id.fieldFour);
 
         if (currentCategory.equals("DEVICE")) {
-            labelOne.setText("Model");
-            labelTwo.setText("Manufacturer");
-            labelThree.setText("Brand");
-            labelFour.setText("Type");
+            labelOne.setText(R.string.model_label);
+            labelTwo.setText(R.string.manufacturer_label);
+            labelThree.setText(R.string.brand_label);
+            labelFour.setText(R.string.type_label);
 
             fieldOne.setText(deviceInfo.getModel());
             fieldTwo.setText(deviceInfo.getManufacturer());
@@ -166,10 +166,10 @@ public class HomeActivity extends BaseActivity {
             fieldFour.setText(deviceInfo.getType());
 
         } else if (currentCategory.equals("BATTERY")) {
-            labelOne.setText("Level");
-            labelTwo.setText("Temperature");
-            labelThree.setText("Status");
-            labelFour.setText("Health");
+            labelOne.setText(R.string.level_label);
+            labelTwo.setText(R.string.temperature_label);
+            labelThree.setText(R.string.status_label);
+            labelFour.setText(R.string.health_label);
 
             fieldOne.setText(batteryInfo.getLevel() + "%");
             fieldTwo.setText(batteryInfo.getTemperature() + "°C");
@@ -177,10 +177,10 @@ public class HomeActivity extends BaseActivity {
             fieldFour.setText(batteryInfo.getHealth());
 
         } else if (currentCategory.equals("MEMORY")) {
-            labelOne.setText("Total RAM");
-            labelTwo.setText("Available RAM");
-            labelThree.setText("Total Storage");
-            labelFour.setText("Available Storage");
+            labelOne.setText(R.string.total_ram_label);
+            labelTwo.setText(R.string.available_ram_label);
+            labelThree.setText(R.string.total_storage_label);
+            labelFour.setText(R.string.available_storage_label);
 
             fieldOne.setText(memoryInfo.getTotalRam() + " MB");
             fieldTwo.setText(memoryInfo.getAvailableRam() + " MB");
