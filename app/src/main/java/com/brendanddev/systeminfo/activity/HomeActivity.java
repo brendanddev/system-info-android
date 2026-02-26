@@ -137,15 +137,22 @@ public class HomeActivity extends BaseActivity {
      * Updates the category data TextViews based on the current category.
      */
     private void updateCategoryData() {
-        TextView modelValue = findViewById(R.id.modelValue);
-        TextView manufacturerValue = findViewById(R.id.manufacturerValue);
-        TextView brandValue = findViewById(R.id.brandValue);
-        TextView typeValue = findViewById(R.id.typeValue);
 
-        modelValue.setText(deviceInfo.getModel());
-        manufacturerValue.setText(deviceInfo.getManufacturer());
-        brandValue.setText(deviceInfo.getBrand());
-        typeValue.setText(deviceInfo.getType());
+        if (currentCategory.equals("DEVICE")) {
+            TextView modelValue = findViewById(R.id.modelValue);
+            TextView manufacturerValue = findViewById(R.id.manufacturerValue);
+            TextView brandValue = findViewById(R.id.brandValue);
+            TextView typeValue = findViewById(R.id.typeValue);
+
+            modelValue.setText(deviceInfo.getModel());
+            manufacturerValue.setText(deviceInfo.getManufacturer());
+            brandValue.setText(deviceInfo.getBrand());
+            typeValue.setText(deviceInfo.getType());
+        } else if (currentCategory.equals("BATTERY")) {
+
+        } else if (currentCategory.equals("MEMORY")) {
+
+        }
     }
 
 
