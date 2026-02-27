@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     tools:context=".activity.SettingsActivity">
 
 
@@ -37,6 +38,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
+        android:backgroundTint="@color/text_color"
         android:entries="@array/categories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -55,7 +57,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/settings_system_category"
-        android:textColor="@color/card_color"
+        android:textColor="@color/text_color"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/categorySpinner"
         app:layout_constraintEnd_toStartOf="@+id/categorySpinner"
