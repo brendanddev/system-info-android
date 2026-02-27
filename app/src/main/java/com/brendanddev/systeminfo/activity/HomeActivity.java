@@ -1,13 +1,9 @@
 package com.brendanddev.systeminfo.activity;
 
-import android.Manifest;
+
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +13,6 @@ import android.widget.TextView;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.core.app.ActivityCompat;
 
 import com.brendanddev.systeminfo.R;
 import com.brendanddev.systeminfo.model.BatteryInfo;
@@ -89,25 +84,6 @@ public class HomeActivity extends BaseActivity {
         updateCategoryLabel();
         updateCategoryData();
         Log.d(TAG, "Current Category: " + currentCategory);
-    }
-
-    /**
-     * Handles the request for permissions from the user.
-     *
-     * @param requestCode The value identifying the permission request.
-     * @param permissions The permissions that were requested.
-     * @param results The results of the permission request.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
-        super.onRequestPermissionsResult(requestCode, permissions, results);
-
-        if (results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "User GRANTED Location Permissions");
-            setupLocationManager();
-        } else {
-            Log.d(TAG, "User DENIED Location Permissions");
-        }
     }
 
 
@@ -215,28 +191,6 @@ public class HomeActivity extends BaseActivity {
 
         }
     }
-
-
-    private void onLocationChanged(Location location) {
-        // TODO
-    }
-
-
-    private void setupLocationManager() {
-        // Check if user granted permissions
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
-            // Setup LocationManager
-            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, this::onLocationChanged);
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, this::onLocationChanged);
-            Log.d(TAG, "Setup LocationManager");
-        } else {
-            Log.d(TAG, "Missing Required Permissions to setup LocationManager");
-        }
-    }
-
 
 
 
